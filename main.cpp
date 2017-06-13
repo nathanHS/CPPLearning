@@ -20,5 +20,9 @@ int main() {
 	decltype((var)) ref = *p;
 	std::cout << "Hello, World!" << std::endl;
 
+//	赋值表达式的类型是引用
+	decltype(var = const_var) d = var;
+
+
 	return 0;
 }

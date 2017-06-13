@@ -20,3 +20,4 @@ decltype
     auto var = 1, &ref_var = var, *p = &var;
     decltype((var)) ref = *p;
     ```
+-   赋值表达式的类型是引用
