@@ -2,25 +2,15 @@
 
 int main() {
 
-	unsigned cnt = 42;
-	constexpr unsigned sz = 42;
+	std::string st{"123"};
 
-//	非常量表达式定义数组
-//	int bad[cnt];
-//	int a = bad[cnt+1];
-//	bad[1] = 2;
-//	std::cout << bad[1];
+	auto a = st.c_str();
+	char b[3];
+	strcpy(b, a);
 
-//	因为空字符长度不够
-//	char test[2] = "23";
+	st[1] = 'c';
 
-	char test[2] = {'2', '3'};
-
-
-	int arr[10];
-
-	int (*p)[10] = &arr;
-	int (*&d)[10] = p;
+	std::cout << a << b << st;
 
 	std::cout << "Hello, World!" << std::endl;
 
