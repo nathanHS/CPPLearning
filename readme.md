@@ -62,3 +62,11 @@ constexpr int ret = something(var)；
 [参考链接][1]
       
 [1]: http://www.cnblogs.com/boydfd/p/5041316.html "Effect C++ 翻译"
+
+
+auto
+=========
+
+-   不带自动匹配 `顶层const` 修饰 
+-   自动匹配 `底层 const` 修饰
+-   不自动匹配引用
