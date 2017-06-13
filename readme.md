@@ -163,6 +163,48 @@ for(declaration「&」 : expression)
 statement
 ```
 
+vector
+-------
 
+vector 是一个类模板，在 C++ 中，我们可以将模板看成是编译器生成类或函数时写的一份说明。
+
+**vector 是模板而不是类型，vector<int>是类型。**
+
+#### 初始化
+
+-   vector<T> v1 : 空的 vector 执行默认初始化
+-   vector<T> v2(v1) : v2 中含有 v1 中所有元素的副本
+-   vector<T> v2 = v1 : 同上
+-   vector<T> v3(n, val) : 包含 n 个值为 val 的元素
+-   vector<T> v4(n) : n个重复地执行了值初始化的对象
+-   vector<T> v5{a,b,c} : 初始化各个元素
+-   vector<T> v5 = {a,b,c} : 同上
+
+#### 注意
+
+-   如果要在循环里添加或减少 vector 的元素，则不能使用范围 for 循环。
+-   下标运算符只能作用于已经拥有的元素
+
+迭代器
+-------
+
+> 我们理解一个类型是迭代器当且仅当它支持一套操作，这套操作支持我们能访问容器的元素或者从某个元素引动到另一个元素。
+>> 因为模板类都重写了 `==`和`!=`运算符，所以多使用`!=`代替`>`运算符。
+
+迭代器例子：
+
+```C++
+	vector<int> v4{1,2,3};
+
+	for(auto it = v4.begin(); it != v4.end(); ++it)
+	{
+		(*it)++;
+	}
+
+```
+迭代器操作：
+-   *iter
+-   iter->item
+-   ++iter
 
 
