@@ -1,31 +1,24 @@
 #include <iostream>
-#include "Sales_data.h"
+#include "vector"
 
+using std::vector;
 
 int main() {
 
-//	下面的写法更好
-//	struct Sales_data{
-//		std::string bookNo;
-//		unsigned units_sold = 0;
-//		double revenue = 0.0;
-//	}accum, trans,*salesptr;
+//	默认构造
+	vector<int> v1;
+	//v1.push_back(60);
 
+	vector<int> v2(v1);
+	vector<int> v3 = v1;
 
-//	Sales_data *salesptr;
-//	Sales_data accum{"abc",1,11.5};
-//	Sales_data trans = {"cc",2,42};
+	vector<int> v4{1, 2, 3};
 
+	//v1[100] = 1;
 
-	Sales_data data1,data2;
-
-	double price = 0;
-//	读入第一笔交易的书号，数量，单价
-	std::cin >> data1.bookNo >> data1.units_sold >> price;
-	data1.revenue = data1.units_sold * price;
-
-	std::cin >> data2.bookNo >> data2.units_sold >> price;
-	data2.revenue = data2.units_sold * price;
+	for (auto it = v4.begin(); it != v4.end(); ++it) {
+		(*it)++;
+	}
 
 
 
