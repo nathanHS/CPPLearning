@@ -123,7 +123,7 @@ using namespace::std;
 string
 --------
 
-###初始化方式###
+### 初始化方式###
 -   默认初始化
 ```C++
 //	默认初始化
@@ -141,7 +141,7 @@ string default_init_var;
 	string construct_init_var("test");
 	string construct_init_var1(10,'c');
 ```
-###相关操作###
+### 相关操作###
 -   重载 `>>`，`<<`:覆盖式赋值,输出
 ```C++
 	string test;
@@ -157,7 +157,7 @@ string default_init_var;
 -   `=`：覆盖
 -   `==`：如果字符完全一样就相等
 
-###范围 for 循环###
+### 范围 for 循环###
 ```C++
 for(declaration「&」 : expression)
 statement
