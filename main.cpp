@@ -1,33 +1,69 @@
 #include <iostream>
-#include "Sales_data.h"
 
+using std::string;
+using std::cin;
+using std::cout;
+using std::endl;
 
 int main() {
 
-//	下面的写法更好
-//	struct Sales_data{
-//		std::string bookNo;
-//		unsigned units_sold = 0;
-//		double revenue = 0.0;
-//	}accum, trans,*salesptr;
+//	默认初始化
+	string default_init_var = " ";
+
+//	直接初始化
+	string construct_init_var("test");
+	string construct_init_var1(10, 'c');
+
+//	拷贝初始化
+	string copy_init_var = "copy";
+	string copy_init_var1 = construct_init_var1;
+
+////	不可追加，直接覆盖
+//	string test;
+//	cin >> test;
+//	cin >> test;
+//
+////	角标写入
+//	test[1] = '1';
+//	std::cout << test << std::endl;
+//
+////	读一行覆盖(会保留空白符)
+//	getline(cin,test);
+//	std::cout << test << std::endl;
 
 
-//	Sales_data *salesptr;
-//	Sales_data accum{"abc",1,11.5};
-//	Sales_data trans = {"cc",2,42};
+//	测试 empty 和 size
+//	auto size = default_init_var.size();
+//	auto empty = default_init_var.empty();
+//	std::cout << size << std::endl;
+//	std::cout << empty << std::endl;
 
 
-	Sales_data data1,data2;
+//	范围 for
+//	string get_chars = "s Ics !!@3ssa";
+//	decltype(get_chars.size()) count = 0;
+//	for (auto each : get_chars){
+//		if (isalpha(each))
+//			++count;
+//
+//	}
+//	cout << "count = " << count << endl;
 
-	double price = 0;
-//	读入第一笔交易的书号，数量，单价
-	std::cin >> data1.bookNo >> data1.units_sold >> price;
-	data1.revenue = data1.units_sold * price;
-
-	std::cin >> data2.bookNo >> data2.units_sold >> price;
-	data2.revenue = data2.units_sold * price;
 
 
+//	角标
+//	string chars = "hellowOrld !!!";
+//	for (decltype(chars.size()) index = 0; index < chars.size() && !isspace(chars[index]); ++index) {
+//		chars[index] = toupper(chars[index]);
+//	}
+//	cout << "chars = " << chars << endl;
+
+
+//
+//	const string example = "123";
+//	for(auto &each : example){
+//		each = '1';
+//	}
 
 	std::cout << "Hello, World!" << std::endl;
 
