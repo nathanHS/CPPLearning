@@ -2,27 +2,31 @@
 
 int main() {
 
-	unsigned cnt = 42;
-	constexpr unsigned sz = 42;
-
-//	非常量表达式定义数组
-//	int bad[cnt];
-//	int a = bad[cnt+1];
-//	bad[1] = 2;
-//	std::cout << bad[1];
-
-//	因为空字符长度不够
-//	char test[2] = "23";
-
-	char test[2] = {'2', '3'};
+	int ia[10];
+	int *ip = ia;
 
 
-	int arr[10];
+	std::string st{"123"};
 
-	int (*p)[10] = &arr;
-	int (*&d)[10] = p;
-
+	auto a = st.c_str();
+	char b[3]; // 这里是3，4就没有问题，3就会导致 a 的内容编程乱码
+	strcpy(b, a);
+	auto c = 0x9e0 - 0x800;
 	std::cout << "Hello, World!" << std::endl;
 
+//	const char *cp = "23";
+//	char *q = const_cast<char *>(cp);
+//	*q = '1';
+
+
+	int p[] = {1, 2, 3};
+	int *ppp = p;
+	auto cc = *ppp;
+	cc++;
+	char *pp = reinterpret_cast<char *>(ppp);
+
+	auto ccc = *pp;
+	ccc++;
 	return 0;
+
 }
