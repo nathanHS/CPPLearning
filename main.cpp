@@ -1,27 +1,30 @@
 #include <iostream>
+#include <cassert>
 
+int a(std::string a) { std::cout << a; }
+
+int temp2(int = 0) { return 12; }
 int main() {
 
-	unsigned cnt = 42;
-	constexpr unsigned sz = 42;
-
-//	非常量表达式定义数组
-//	int bad[cnt];
-//	int a = bad[cnt+1];
-//	bad[1] = 2;
-//	std::cout << bad[1];
-
-//	因为空字符长度不够
-//	char test[2] = "23";
-
-	char test[2] = {'2', '3'};
+	int const aa = 10;
+//	int a = 10;
+//
+//	int const *p = &a;
+//	int * const pp = &a;
+//
+//	int *ppp = pp;
 
 
-	int arr[10];
+//	列表初始化
+//	a({'1','2'});
 
-	int (*p)[10] = &arr;
-	int (*&d)[10] = p;
 
+	int a[10];
+	assert(0);
+	int *p = a;
+	int (*pp)[10] = &a;
+
+	temp2();
 	std::cout << "Hello, World!" << std::endl;
 
 	return 0;
