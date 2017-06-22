@@ -1,25 +1,36 @@
 
-数组
-=========
+关联容器
+---------
 
--   定义数组的长度必须是常量表达式
-    -   但是实测，如果使用非常量表达式定义数组，数组不会出现异常，**但无法写入**。 
--   使用字**面值常量初始化字**符数组时会在最后一个位置添加一个空字符，使用**列表初始化则不会。**
--   指针的数组
+map:键值对，set:集合。
+
+#### map
+
 ```C++
-int *p[10];
+	map<string,int> word_count;
+
+	++word_count["hello"];
+	--word_count["ss"];
+	for_each(begin(word_count),end(word_count),[](pair<string,int> s){cout << s.first << "  " << s.second << endl;});
+	
+    // hello  1
+    // ss  -1
 ```
--   不存在引用的数组
--   指向数组的指针
+
+#### set
+
 ```C++
-int arr[10];
-int (*k)[10] = &arr; // 指向长度为10的整型数组的指针。
+	set<int> se;
+	se.insert(1);
+	se.insert(2);
 ```
--   数组的引用
+
+##### 关联容器添加元素即排序
+
 ```C++
-int (&p)[10] = arr;
-```
--   指向数组的指针的引用(***和变量名在同括号内，就是指针**)
-```C++
-int (&*rp)[10] = k; // *&和&*同义
+bool func(Sales_data a,Sales_data b){return a > b;}
+
+multiset<Sales_data,decltype(func)*> exmaple(func);
+
+
 ```
