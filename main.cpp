@@ -1,28 +1,46 @@
 #include <iostream>
+#include <vector>
+#include <list>
 
+using namespace std;
 int main() {
 
-	unsigned cnt = 42;
-	constexpr unsigned sz = 42;
-
-//	非常量表达式定义数组
-//	int bad[cnt];
-//	int a = bad[cnt+1];
-//	bad[1] = 2;
-//	std::cout << bad[1];
-
-//	因为空字符长度不够
-//	char test[2] = "23";
-
-	char test[2] = {'2', '3'};
+	int kks = 1;
 
 
-	int arr[10];
+	auto l = [&] { return ++kks; };
 
-	int (*p)[10] = &arr;
-	int (*&d)[10] = p;
+	kks++;
 
-	std::cout << "Hello, World!" << std::endl;
+	auto c = l();
+
+
+	vector<int> a;
+
+	auto inserter = back_inserter(a);
+
+	*inserter = 2;
+	a.push_back(3);
+	*inserter = 2;
+	auto asd = *inserter;
+
+
+	vector<int> b = {2, 22, 999, 0};
+	auto sd = copy(begin(a), end(a), begin(b));
+	*sd = 999123;
+
+	for_each(begin(a), end(a), [](const int &s) { cout << s << endl; });
+	auto gg = [=] { return sd; };
+	sort(b.begin(), b.end());
+
+//	auto ret = unique()
+
+
+	auto f = [] { return 43; };
+
+
+	auto s = [sd](const int &a) { return *sd > a; };
+
 
 	return 0;
 }
