@@ -1,28 +1,49 @@
 #include <iostream>
 
+using namespace std;
+
+int kk = 2;
+
+int &ins() { return kk; }
+
 int main() {
 
-	unsigned cnt = 42;
-	constexpr unsigned sz = 42;
+	allocator<string> allo;
+//	分配
+	auto p = allo.allocate(3);
+	auto q = p;
+//	构造
+	allo.construct(p++, "++");
+	allo.construct(p++, "--");
+	allo.construct(p++, "ss");
+//	销毁
+	allo.destroy(p--);
+	allo.destroy(p--);
+	allo.destroy(p);
+//	收回
+	allo.deallocate(p, 3);
 
-//	非常量表达式定义数组
-//	int bad[cnt];
-//	int a = bad[cnt+1];
-//	bad[1] = 2;
-//	std::cout << bad[1];
 
-//	因为空字符长度不够
-//	char test[2] = "23";
+	auto c = 1;
+	auto ss = 0;
 
-	char test[2] = {'2', '3'};
+	unique_ptr<int> np(new int(10));
+//	转移
+	unique_ptr<int> next_np(np.release());
+
+	unique_ptr<int> temp_np(new int(9));
+//	重置
+	next_np.reset(temp_np.release());
 
 
-	int arr[10];
+	while (c) {
+		auto c = new int(1);
+		cout << "new " << ++ss << "个" << endl;
+	}
+	int s = ins();
+	s++;
+	shared_ptr<int> sp = make_shared<int>(4);
 
-	int (*p)[10] = &arr;
-	int (*&d)[10] = p;
-
-	std::cout << "Hello, World!" << std::endl;
 
 	return 0;
 }

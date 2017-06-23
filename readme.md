@@ -1,25 +1,66 @@
 
-数组
-=========
+动态内存
+---------
 
--   定义数组的长度必须是常量表达式
-    -   但是实测，如果使用非常量表达式定义数组，数组不会出现异常，**但无法写入**。 
--   使用字**面值常量初始化字**符数组时会在最后一个位置添加一个空字符，使用**列表初始化则不会。**
--   指针的数组
+#### 智能指针
+
+-   shared_ptr
+-   unique_ptr
+-   weak_ptr
+
+#### shared_ptr
+
+> 最安全的分配和使用动态内存的方法是调用`make_shared`函数，返回一个`shared_ptr`。
 ```C++
-int *p[10];
+	shared_ptr<int> sp = make_shared<int>(4);
 ```
--   不存在引用的数组
--   指向数组的指针
+
+> 如果把 shared_ptr 放在容器里，不再需要它的时候记得 erase 掉。
+
+> **异常如果未在发生的函数内部被捕获，那么函数内部的 shared_ptr 都将被释放**
+
+#### 删除器
+
+当 p 被销毁的时候执行的函数，
+
 ```C++
-int arr[10];
-int (*k)[10] = &arr; // 指向长度为10的整型数组的指针。
+shared_ptr<connection> p(&c, [](Connection *p){disconnect(p);});
 ```
--   数组的引用
+
+#### unique_ptr
+
 ```C++
-int (&p)[10] = arr;
+	auto c = 1;
+	auto ss = 0;
+
+	unique_ptr<int> np(new int(10));
+//	转移
+	unique_ptr<int> next_np(np.release());
+
+	unique_ptr<int> temp_np(new int(9));
+//	重置
+	 next_np.reset(temp_np.release());
 ```
--   指向数组的指针的引用(***和变量名在同括号内，就是指针**)
+
+#### allocator 类
+先分配，后构造，最后使用。
+
+先销毁，后归还内存。
 ```C++
-int (&*rp)[10] = k; // *&和&*同义
+	allocator<string> allo;
+//	分配
+	auto p = allo.allocate(3);
+	auto q = p;
+//	构造
+	allo.construct(p++,"++");
+	allo.construct(p++,"--");
+	allo.construct(p++,"ss");
+//	销毁
+	allo.destroy(p--);
+	allo.destroy(p--);
+	allo.destroy(p);
+//	收回
+	allo.deallocate(p,3);
 ```
+
+#### 
